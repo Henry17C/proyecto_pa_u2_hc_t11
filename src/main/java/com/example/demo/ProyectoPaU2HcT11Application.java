@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,16 +9,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.concesionario.modelo.Cliente;
-import com.example.demo.concesionario.modelo.Vehiculo;
-import com.example.demo.concesionario.service.IClienteService;
-import com.example.demo.concesionario.service.IVehiculoService;
+import com.example.demo.auto13.modelo.Automovil;
+import com.example.demo.auto13.service.IAutomovilService;
+
+
 
 @SpringBootApplication
 public class ProyectoPaU2HcT11Application implements CommandLineRunner{
 
-	@Autowired
-	IVehiculoService iVehiculoService;
+		@Autowired
+		private IAutomovilService automovilService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2HcT11Application.class, args);
@@ -25,22 +26,8 @@ public class ProyectoPaU2HcT11Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		
-		Cliente cliente1 = new Cliente();
-		//Cliente cliente2 = new Cliente();
-		Vehiculo vehiculo1= new Vehiculo();
 	
-		
-		vehiculo1.setMarca("Honda Integra");
-		vehiculo1.setPlaca("SRF145");
-		vehiculo1.setColor("Rojo");
-		vehiculo1.setAnio(1999);
-		
-		cliente1.setApellido("Jorge");
-		cliente1.setNombre("Reinoso");
-		cliente1.setAnioNacimiento(1999);
-		cliente1.setCedula("175323");
+	
 		/*
 		cliente2.setApellido("Jose");
 		cliente2.setNombre("Lopez");
@@ -48,27 +35,38 @@ public class ProyectoPaU2HcT11Application implements CommandLineRunner{
 		cliente2.setCedula("175616");
 		*/
 		
-		Set<Vehiculo> HSetVehiculos= new HashSet<Vehiculo>();
-		Set<Cliente> HSetClientes= new HashSet<Cliente>();
+		/*
+		Automovil automovil= new Automovil();
 		
-		HSetClientes.add(cliente1);
-		//HSetClientes.add(cliente2);
+		automovil.setAnio(new BigDecimal(1997));
+		automovil.setColor("Rojo");
+		automovil.setKilometraje(new BigDecimal(1997));
+		automovil.setMarca("Mazda");
+		automovil.setModelo("RX-7");
+		automovil.setPlaca("NFS478");
+		automovil.setPrecio(new BigDecimal(30000));
 		
-		HSetVehiculos.add(vehiculo1);
+		automovilService.insertar(automovil);
+		
+		*/
+	
+		automovilService.buscarPorColorTypedQuery("Rojo");System.out.println(1);
+		automovilService.buscarPorModeloTypedQuery("RX-7");System.out.println(2);
+		automovilService.buscarPorMarcaQueryTyped("Mazda");System.out.println(3);
+		
+		automovilService.buscarPorkilometrajeNamedQuery(new BigDecimal(1997));System.out.println(4);
+		automovilService.buscarPorPlacaNamedQuery("NFS478");System.out.println(5);
+		automovilService.buscarPorPrecioNamedQuery(new BigDecimal(30000));System.out.println(6);
 		
 		
-		cliente1.setVehiculos(HSetVehiculos);
-		//cliente2.setVehiculos(HSetVehiculos);
-		vehiculo1.setClientes(HSetClientes);
+		automovilService.buscarPorColorNativeQuery("Rojo");System.out.println(7);
+		automovilService.buscarPorMarcaNativeQuery("Mazda");System.out.println(8);
+		automovilService.buscarPorAnioNativeQuery(new BigDecimal(1997));System.out.println(9);
 		
 		
-		iVehiculoService.insertar(vehiculo1);
-		Vehiculo vehiculo= iVehiculoService.buscar(6);
-		vehiculo.setAnio(1994);
-		iVehiculoService.actualizar(vehiculo);
-		iVehiculoService.eliminar(6);
-		
-		
+		automovilService.buscarPorColorNamedNativeQuery("Rojo");System.out.println(10);
+		automovilService.buscarPorPlacaNamedNativeQuery("NFS478");System.out.println(11);
+		automovilService.buscarPorMarcaNamedNativeQuery("Mazda");System.out.println(12);
 	
 		
 	
