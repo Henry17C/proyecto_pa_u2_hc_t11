@@ -94,8 +94,36 @@ public class AutomovilServiceImpl implements IAutomovilService {
 		// TODO Auto-generated method stub
 		return automovilRepo.buscarPorPlacaNamedNativeQuery(placa);
 	}
+
+//DELETE
 	
-	//NAMED QUERY
+	@Override
+	public int eliminarPorMarca(String marca) {
+		// TODO Auto-generated method stub
+		return automovilRepo.eliminarPorMarca(marca);
+	}
+
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		// TODO Auto-generated method stub
+		return automovilRepo.eliminarPorPlaca(placa);
+	}
+
+	
+	//UPDATE
+	@Override
+	public int actualizarPorMarca(String marca, String placa, String color) {
+		// TODO Auto-generated method stub
+		return automovilRepo.actualizarPorMarca(marca, placa, color);
+	}
+
+	@Override
+	public int actualizarPorPlaca(String placa, String modelo) {
+		// TODO Auto-generated method stub
+		return automovilRepo.actualizarPorPlaca(placa, modelo);
+	}
+	
+
 	
 	
 	

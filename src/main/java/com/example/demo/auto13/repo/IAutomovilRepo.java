@@ -32,6 +32,16 @@ public interface IAutomovilRepo {
 	public Automovil buscarPorPlacaNamedNativeQuery(String placa);
 	public Automovil buscarPorMarcaNamedNativeQuery(String  modelo);
 	
+	/// DELETE
+	public int eliminarPorMarca(String marca);
+	public int eliminarPorPlaca(String placa);
+	
+	
+	//UPDATE
+	public int actualizarPorMarca(String marca, String placa, String color);
+	public int actualizarPorPlaca(String placa, String modelo);
+	
+	
 	
 	
 	

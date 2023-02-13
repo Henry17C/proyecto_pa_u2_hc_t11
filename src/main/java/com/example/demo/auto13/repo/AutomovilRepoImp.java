@@ -125,6 +125,44 @@ public class AutomovilRepoImp implements IAutomovilRepo {
 		myQuery.setParameter("datoMarca", marca);
 		return (Automovil) myQuery.getSingleResult();
 	}
+
+	//DELETE
+	
+	@Override
+	public int eliminarPorMarca(String marca) {
+		Query query = this.entityManager.createQuery("DELETE FROM Automovil a WHERE  a.marca= :datoMarca");
+		query.setParameter("datoMarca", marca);
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		Query query = this.entityManager.createQuery("DELETE FROM  Automovil a WHERE a.placa= :datoPlaca");
+		query.setParameter("datoPlaca", placa);
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorMarca(String marca, String placa, String color) {
+		// TODO Auto-generated method stub
+		Query query = this.entityManager.createQuery("UPDATE  Automovil a SET a.placa= :datoPlaca , a.color= :datoColor"
+				+ " WHERE a.marca= :datoMarca ");
+		query.setParameter("datoMarca", marca);
+		query.setParameter("datoPlaca", placa);
+		query.setParameter("datoColor", color);
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorPlaca(String placa, String modelo) {
+		
+		Query query = this.entityManager.createQuery("UPDATE Automovil a SET a.modelo=: datoModelo WHERE a.placa= :datoPlaca");
+		query.setParameter("datoPlaca", placa);
+		query.setParameter("datoModelo", modelo);
+		return query.executeUpdate();
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

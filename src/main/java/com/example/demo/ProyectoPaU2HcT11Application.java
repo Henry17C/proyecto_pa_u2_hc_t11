@@ -50,6 +50,7 @@ public class ProyectoPaU2HcT11Application implements CommandLineRunner{
 		
 		*/
 	
+		/*
 		automovilService.buscarPorColorTypedQuery("Rojo");System.out.println(1);
 		automovilService.buscarPorModeloTypedQuery("RX-7");System.out.println(2);
 		automovilService.buscarPorMarcaQueryTyped("Mazda");System.out.println(3);
@@ -68,9 +69,15 @@ public class ProyectoPaU2HcT11Application implements CommandLineRunner{
 		automovilService.buscarPorPlacaNamedNativeQuery("NFS478");System.out.println(11);
 		automovilService.buscarPorMarcaNamedNativeQuery("Mazda");System.out.println(12);
 	
-		
+		*/
 	
+		//UPDATE
+		automovilService.actualizarPorMarca("Mazda", "HCR123", "Purpura");
+		automovilService.actualizarPorPlaca("NFS479", "SS");
 		
+		/// DELETE
+		automovilService.eliminarPorMarca("Mazda");
+		automovilService.eliminarPorPlaca("NFS479");
 		
 		
 		
